@@ -1,6 +1,6 @@
 # Desafio-Loopis
 This repository will be used for the versioning and management of team 4 of the selection process of Loopis JR, a junior company of the IFPB-Cajazeiras.
-# Loopis To-Do
+# 📌Loopis To-Do
 Create a system of any type (web, desktop, mobile, etc.) that performs the
 managing a to-do list. The system should allow whoever uses it
 can add, edit and delete tasks, update progress information with
