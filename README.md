@@ -8,4 +8,4 @@ based on a check list, list tasks in alphabetical order and create a
 search by name. In addition, the system must have a database for
 store the task information after the application exits (Local Storage).
 
-![imagem_2021-11-09_161352](https://user-images.githubusercontent.com/44758448/140989544-fd3424ac-51c1-4ccb-8863-c9e1e7cdb401.png)
+![image](https://user-images.githubusercontent.com/44758448/141035996-347d073c-3ef4-44cd-9063-ff6fa5829fba.png)
