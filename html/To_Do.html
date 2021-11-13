@@ -13,31 +13,49 @@
     <title>To do list</title>
 </head>
 <body>
-    <center>
-    <h1>To Do List</h1>
-    <input id="novaTarefa" value="Adicionar Tarefa"> 
-    <button id="botao" onclick=criarTarefa()>Adicionar</button>
-    <br><br>
-    <input id="Pesquisa" value="Pesquisar...">
-    <button>pesquisar</button>
-    <br><br>
-    <table> 
-         <thead>   
-         <tr>     
-         </tr>  
-         </thead>   
-         <tbody> 
-         <tr>         
-         <td>&nbsp;
-            <div id="lista">
-            </div>
-         </td>     
-         </tr>  
-         </tbody> </table>
+    <br>
+    <br>
      <br>
-    <button id="botao" onclick=deletarTodas()>Delete all</button>
-    </center>
-
+    <div class="container">
+        <div class="card">
+            <center>
+            <h1 class="card-header"><b>Loopis To-Do</b></h1>
+            </center>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Digite a tarefa" name="tarefa" autofocus>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="1">Pesquisar</button>
+                    </div>
+                </div>
+                        <div id="lista">
+                        </div>
+                <button id="1" onclick=deletarTodas()>Delete all</button>
+                <img class="btn2" href="#" class="btn btn-warning" data-toggle="modal" data-target="#adiconarTarefas" src="../assets/icons/+.png">
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="adiconarTarefas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control" placeholder="Digite a tarefa" name="tarefa" autofocus id="novaTarefa" value="Adicionar Tarefa"> 
+            <div class="input-group-append"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" id="botao" onclick=criarTarefa()>Adicionar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <!-- JqueryCDN -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

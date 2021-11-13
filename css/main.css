@@ -32,7 +32,37 @@ img {
       padding-top: 20%;
   }
   .caixa-texto{width: 240px;}
- .btn{
-     width: 180px;
+ .btn1{
+    background:url(../assets/icons/lixeira.png) no-repeat;
+    width: 15px;
+    position: sticky;
+    left: 90%;
+    min-width: 30px;
+    margin-top: 3px;
+     box-shadow: 0 0 0 0;
+    outline: 0;
+    border: none;
  }
- .demo {         border:1px sólido #C0C0C0;         border-collapse:colapso;         padding:5px;     }     .demo th {         border:1px sólido #C0C0C0;         padding:5px;         background:#F0F0F0;     }     .demo td {         border:1px sólido #C0C0C0;         padding:5px;     }
+ .btn2{
+  position: sticky;
+  left: 88%;
+  min-width: 30px;
+  margin-top: 10px;
+}
+ li {
+    list-style-type: none;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 0.5px solid #DFDFDF;
+    height : 35px;
+  }
+.card-header{
+  color: #000;
+}
+.form-check-input{
+  margin-right: 15px;
+}
+p{
+  margin-left: 30px;
+  margin-top: 2px;
+}
