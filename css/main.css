@@ -63,3 +63,6 @@ p{
 .btn-outline-light{
   width: 150px;
 }
+.modal-dialog{
+  margin-top: 10%;
+}
