@@ -31,17 +31,11 @@ img {
   #splashart{
       padding-top: 20%;
   }
-  .caixa-texto{width: 240px;}
- .btn1{
-    background:url(../assets/icons/lixeira.png) no-repeat;
-    width: 15px;
-    position: sticky;
-    left: 90%;
-    min-width: 30px;
-    margin-top: 3px;
-     box-shadow: 0 0 0 0;
-    outline: 0;
-    border: none;
+  .caixa-texto{width: 300px;}
+ .btn-editar{
+  float:right;
+  margin-right: 15px;
+  margin-top: 4px;
  }
  .btn2{
   position: sticky;
@@ -65,4 +59,7 @@ img {
 p{
   margin-left: 30px;
   margin-top: 2px;
+}
+.btn-outline-light{
+  width: 150px;
 }
