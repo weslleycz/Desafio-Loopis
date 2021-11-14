@@ -1,6 +1,8 @@
 //Array que armazena as tarefas
 let tarefas=JSON.parse(localStorage.getItem('tarefas'))||[];
 Atualizahtml(tarefas);
+//variáveis de controle de edição
+let IdEdicao;
 
 //Função que gera um id  
 function idGerador(){
@@ -15,7 +17,8 @@ let descricaoTarefa = document.querySelector("#novaTarefa").value;
 if(descricaoTarefa != ""){
 let tarefa={
     id:idGerador(),
-    desc:descricaoTarefa
+    desc:descricaoTarefa,
+    status:true
 }
 tarefas.push(tarefa);
 Atualizahtml(tarefas);
@@ -27,41 +30,20 @@ salvarDadosStorag();
 function Atualizahtml(n){
     let list="<ui>";
     n.forEach(tarefa=>{
-        list +="<li>"+"<p>"+'<input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">'+tarefa.desc+
-         "<input readonly onclick=deletartarefa("+(tarefa.id)+")"+" class="+'"btn1"'+"/>"+"</p>"+
-         //Modal Editar Tarefa
-         
-         //'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">  Abrir modal de demonstração </button>'+
-         '<div class="modal fade" id="'+tarefa.id+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
-         '<div class="modal-dialog" role="document">'+
-         ' <div class="modal-content">'+
-         ' <div class="modal-header">'+
-         '<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">'+
-         '<span aria-hidden="true">&times;</span>'+
-         ' </button>'+
-         '</div>'+
-         '<div class="modal-body">'+
-         '...'+
-         '</div>'+
-         ' <div class="modal-footer">'+
-         '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>'+
-         ' <button type="button" class="btn btn-primary">Salvar mudanças</button>'+
-             '</div>'+
-           '</div>'+
-         '</div>'+
-         ' </div>'+
-         "</li>"
+        list +="<li>"+"<p>"+'<input class="form-check-input position-static" type="checkbox" id="'+(tarefa.id)+'" value="option1" aria-label="...">'+tarefa.desc+
+         '<img class="btn-editar" data-toggle="modal" data-target="#Deletar"'+ 'src="../assets/icons/lixeira.png"'+'onclick=recebeId('+tarefa.id+')'+'>'+
+         '<img class="btn-editar"'+ 'src="../assets/icons/lapis.png" data-toggle="modal" data-target="#EditarTarefa"'+'onclick=recebeId('+tarefa.id+')'+'>'+
+         "</p>"
         ;
     });
     list+="</ul>";
-
     document.getElementById("lista").innerHTML=list;
     document.getElementById("novaTarefa").value="";
 }
 
 //Função que apaga a tarefa definida
-function deletartarefa(n){
-    let pos = indexOfStevie = tarefas.findIndex(i => i.id == n);
+function deletartarefa(){
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdEdicao);
     tarefas.splice(pos, 1);
     Atualizahtml(tarefas);
     salvarDadosStorag();
@@ -74,12 +56,19 @@ function deletarTodas(){
     salvarDadosStorag();
 }
 
+//Função que que recebe o Id
+function recebeId(n){
+    IdEdicao=n;
+    console.log(IdEdicao);
+}
+
 //Função que editar uma tarefa definida
-function editarTarefa(n){
-    let pos = indexOfStevie = tarefas.findIndex(i => i.id == n);
+function editarTarefa(){
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdEdicao);
     let inputEditartarefa = document.querySelector("#editar").value;
     if(inputEditartarefa != ""){  
         tarefas[pos].desc=inputEditartarefa;
+        document.getElementById("editar").value="";
         Atualizahtml(tarefas);
         salvarDadosStorag(); 
     }
@@ -89,6 +78,10 @@ function editarTarefa(n){
 document.addEventListener("keypress",function(e){
     if(e.key==="Enter"){
 		const btn = document.querySelector("#botao");
+		btn.click();
+	}
+    if(e.key==="Enter"){
+		const btn = document.querySelector("#botao_editar");
 		btn.click();
 	}
 });
