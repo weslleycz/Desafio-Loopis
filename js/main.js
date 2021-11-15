@@ -18,7 +18,7 @@ if(descricaoTarefa != ""){
 let tarefa={
     id:idGerador(),
     desc:descricaoTarefa,
-    status:true
+    status:"false",
 }
 tarefas.push(tarefa);
 Atualizahtml(tarefas);
@@ -30,13 +30,16 @@ salvarDadosStorag();
 function Atualizahtml(n){
     let list="<ui>";
     n.forEach(tarefa=>{
-        list +="<li>"+"<p>"+'<input class="form-check-input position-static" type="checkbox" id="'+(tarefa.id)+'" value="option1" aria-label="...">'+tarefa.desc+
+        let tarefaconculida=MudaCorTarefa(tarefa.id);
+        let CheckboxStatus=MarcaTarefa(tarefa.id); 
+         list +='<li class="'+tarefaconculida+'">'+'<p>'+'<input onclick=MudarStatusTarefa('+tarefa.id+') class="form-check-input position-static"'+ CheckboxStatus + ' type="checkbox" id="'+(tarefa.id)+'" >'+tarefa.desc+
          '<img class="btn-editar" data-toggle="modal" data-target="#Deletar"'+ 'src="../assets/icons/lixeira.png"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          '<img class="btn-editar"'+ 'src="../assets/icons/lapis.png" data-toggle="modal" data-target="#EditarTarefa"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          "</p>"
-        ;
+         ;
     });
     list+="</ul>";
+
     document.getElementById("lista").innerHTML=list;
     document.getElementById("novaTarefa").value="";
 }
@@ -59,7 +62,6 @@ function deletarTodas(){
 //Função que que recebe o Id
 function recebeId(n){
     IdEdicao=n;
-    console.log(IdEdicao);
 }
 
 //Função que editar uma tarefa definida
@@ -73,6 +75,32 @@ function editarTarefa(){
         salvarDadosStorag(); 
     }
     }
+
+//Função que atualiza o status da tarefa 
+function MudarStatusTarefa(n){
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == n);
+    if(tarefas[pos].status==="true"){
+    tarefas[pos].status="false"
+    }else{tarefas[pos].status="true"}
+    Atualizahtml(tarefas);
+    salvarDadosStorag();
+}
+
+//Função que muda a cor das tarefas concluídas
+function MudaCorTarefa(n){
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == n);
+    if(tarefas[pos].status==="true"){
+    return "tarefaconculida"
+    }
+}
+
+//Função que marcar tarefa concluída no html
+function MarcaTarefa(n){
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == n);
+    if(tarefas[pos].status==="true"){
+        return "checked"
+    }
+}
 
 //Evento que detecta quando o enter e pressionado e adicionar um item a lista
 document.addEventListener("keypress",function(e){
