@@ -50,6 +50,10 @@ img {
     border: 0.5px solid #DFDFDF;
     height : 35px;
   }
+  .tarefaconculida{
+    background-color: #bffdcd;
+    text-decoration: line-through;
+  }
 .card-header{
   color: #000;
 }
