@@ -13,9 +13,7 @@
     <title>To do list</title>
 </head>
 <body>
-    <br>
-    <br>
-     <br>
+  <div class="container1">
     <div class="container">
         <div class="card">
             <center>
@@ -23,19 +21,19 @@
             </center>
             <div class="card-body">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Digite a tarefa" name="tarefa" autofocus>
+                    <input type="text" class="form-control" placeholder="Buscar..." name="tarefa" autofocus>
                     <div class="input-group-append">
                         <button  class="btn btn-primary" type="button" id="1">Pesquisar</button>
                     </div>
                 </div>
                         <div id="lista">
                         </div>
-                <button class="btn btn-secondary" onclick=deletarTodas()>Delete all</button>
+                        <button class="btn btn-secondary" onclick=deletarTodas()>Delete all</button>
                 <img class="btn2" href="#" class="btn btn-warning" data-toggle="modal" data-target="#adiconarTarefas" src="../assets/icons/+.png">
             </div>
         </div>
     </div>
-
+  </div>
     
     <!-- Modal Nova Tarefa  -->
 <div class="modal fade" id="adiconarTarefas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,7 +51,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" id="botao" onclick=criarTarefa()>Adicionar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-secondary" onclick=LimparInput() data-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
@@ -74,7 +72,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" id="botao_editar" onclick=editarTarefa() class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-secondary" onclick=LimparInput(1) data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -98,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" onclick=deletartarefa() class="btn btn-primary" data-dismiss="modal">Sim</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-secondary"data-dismiss="modal">Não</button>
       </div>
     </div>
   </div>
