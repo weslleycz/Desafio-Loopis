@@ -1,6 +1,7 @@
 //Array que armazena as tarefas
 let tarefas=JSON.parse(localStorage.getItem('tarefas'))||[];
 Atualizahtml(tarefas);
+
 //variáveis de controle de edição
 let IdEdicao;
 
@@ -21,6 +22,7 @@ let tarefa={
     status:"false",
 }
 tarefas.push(tarefa);
+tarefas.sort(OrganizaTarefa);
 Atualizahtml(tarefas);
 salvarDadosStorag();
 }
@@ -32,7 +34,7 @@ function Atualizahtml(n){
     n.forEach(tarefa=>{
         let tarefaconculida=MudaCorTarefa(tarefa.id);
         let CheckboxStatus=MarcaTarefa(tarefa.id); 
-         list +='<li class="'+tarefaconculida+'">'+'<p>'+'<input onclick=MudarStatusTarefa('+tarefa.id+') class="form-check-input position-static"'+ CheckboxStatus + ' type="checkbox" id="'+(tarefa.id)+'" >'+tarefa.desc+
+         list +='<li class="'+tarefaconculida+'">'+'<p>'+'<input onclick=MudarStatusTarefa('+tarefa.id+') class="form-check-input position-static"'+ CheckboxStatus + ' type="checkbox" id="'+(tarefa.id)+'" >'+'<i onclick=MudarStatusTarefa('+tarefa.id+')'+'>'+tarefa.desc+'</i>'+
          '<img class="btn-editar" data-toggle="modal" data-target="#Deletar"'+ 'src="../assets/icons/lixeira.png"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          '<img class="btn-editar"'+ 'src="../assets/icons/lapis.png" data-toggle="modal" data-target="#EditarTarefa"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          "</p>"
@@ -100,6 +102,26 @@ function MarcaTarefa(n){
     if(tarefas[pos].status==="true"){
         return "checked"
     }
+}
+
+//Função que organiza as tarefa em ordem alfabética
+function OrganizaTarefa(a,b) {
+    if (a.desc < b.desc)
+       return -1;
+    if (a.desc > b.desc)
+      return 1;
+    return 0;
+  }
+
+//Função que limpa o input definido
+function LimparInput(n){
+if(n==1){n="editar"
+document.getElementById(n).value="";
+}else{
+    n="novaTarefa"
+    document.getElementById(n).value="";
+}
+
 }
 
 //Evento que detecta quando o enter e pressionado e adicionar um item a lista
