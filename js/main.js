@@ -61,6 +61,7 @@ function deletarTodas(){
     tarefas= [];
     Atualizahtml(tarefas);
     salvarDadosStorag();
+    document.getElementById("Buscar").value="";
 }
 
 //Função que que recebe o Id
