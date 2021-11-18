@@ -77,3 +77,8 @@ p{
 .modal-dialog{
   margin-top: 10%;
 }
+#Buscar{
+  background-image: url(../assets/icons/lupa.png);
+  background-position: 99%;
+  background-repeat: no-repeat;
+}

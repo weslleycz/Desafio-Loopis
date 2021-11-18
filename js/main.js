@@ -2,8 +2,8 @@
 let tarefas=JSON.parse(localStorage.getItem('tarefas'))||[];
 Atualizahtml(tarefas);
 
-//variáveis de controle de edição
-let IdEdicao;
+//variáveis de controle 
+let IdControle;
 
 //Função que gera um id  
 function idGerador(){
@@ -26,6 +26,7 @@ tarefas.sort(OrganizaTarefa);
 Atualizahtml(tarefas);
 salvarDadosStorag();
 }
+Buscar();
 }
 
 //Função que atualiza a lista de tarefas do html
@@ -48,10 +49,11 @@ function Atualizahtml(n){
 
 //Função que apaga a tarefa definida
 function deletartarefa(){
-    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdEdicao);
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdControle);
     tarefas.splice(pos, 1);
     Atualizahtml(tarefas);
     salvarDadosStorag();
+    Buscar();
 }
 
 //Função que apaga todas as tarefas
@@ -63,18 +65,19 @@ function deletarTodas(){
 
 //Função que que recebe o Id
 function recebeId(n){
-    IdEdicao=n;
+    IdControle=n;
 }
 
 //Função que editar uma tarefa definida
 function editarTarefa(){
-    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdEdicao);
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdControle);
     let inputEditartarefa = document.querySelector("#editar").value;
     if(inputEditartarefa != ""){  
         tarefas[pos].desc=inputEditartarefa;
         document.getElementById("editar").value="";
         Atualizahtml(tarefas);
-        salvarDadosStorag(); 
+        salvarDadosStorag();
+        Buscar(); 
     }
     }
 
@@ -86,6 +89,7 @@ function MudarStatusTarefa(n){
     }else{tarefas[pos].status="true"}
     Atualizahtml(tarefas);
     salvarDadosStorag();
+    Buscar();
 }
 
 //Função que muda a cor das tarefas concluídas
@@ -121,7 +125,6 @@ document.getElementById(n).value="";
     n="novaTarefa"
     document.getElementById(n).value="";
 }
-
 }
 
 //Evento que detecta quando o enter e pressionado e adicionar um item a lista
@@ -139,4 +142,20 @@ document.addEventListener("keypress",function(e){
 //Função que salva as tarefas no storage
 function salvarDadosStorag(){
     localStorage.setItem("tarefas",JSON.stringify(tarefas));
+}
+
+//Função que busca as tarefas 
+function Buscar(){
+let Pesquisa=[];
+ let inputPesquisa=document.querySelector("#Buscar").value;
+ if(inputPesquisa != ""){
+let TamanhoString=inputPesquisa.length;
+ tarefas.forEach(tarefa=>{
+ if(tarefa.desc.substring(0, TamanhoString).toUpperCase()===inputPesquisa.toUpperCase()){
+     //toUpperCase
+ Pesquisa.push(tarefa);
+ }
+ });
+ Atualizahtml(Pesquisa);
+}else{ Atualizahtml(tarefas);}
 }
