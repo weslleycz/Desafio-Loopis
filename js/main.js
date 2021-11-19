@@ -67,6 +67,8 @@ function deletarTodas(){
 //Função que que recebe o Id
 function recebeId(n){
     IdControle=n;
+    let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdControle);
+    document.getElementById("citar").innerHTML=tarefas[pos].desc;
 }
 
 //Função que editar uma tarefa definida
