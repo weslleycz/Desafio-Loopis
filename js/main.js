@@ -21,6 +21,7 @@ let tarefa={
     desc:descricaoTarefa,
     status:"false",
 }
+tarefa.desc=tarefa.desc.charAt(0).toUpperCase()+tarefa.desc.slice(1);
 tarefas.push(tarefa);
 tarefas.sort(OrganizaTarefa);
 Atualizahtml(tarefas);
@@ -69,6 +70,7 @@ function recebeId(n){
     IdControle=n;
     let pos = indexOfStevie = tarefas.findIndex(i => i.id == IdControle);
     document.getElementById("citar").innerHTML=tarefas[pos].desc;
+    document.getElementById("editar").value=tarefas[pos].desc;
 }
 
 //Função que editar uma tarefa definida
