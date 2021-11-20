@@ -79,6 +79,7 @@ function editarTarefa(){
     let inputEditartarefa = document.querySelector("#editar").value;
     if(inputEditartarefa != ""){  
         tarefas[pos].desc=inputEditartarefa;
+        tarefas[pos].desc=tarefas[pos].desc.charAt(0).toUpperCase()+tarefas[pos].desc.slice(1);
         document.getElementById("editar").value="";
         Atualizahtml(tarefas);
         salvarDadosStorag();
