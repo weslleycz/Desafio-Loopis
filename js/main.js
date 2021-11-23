@@ -36,7 +36,8 @@ function Atualizahtml(n){
     n.forEach(tarefa=>{
         let tarefaconculida=MudaCorTarefa(tarefa.id);
         let CheckboxStatus=MarcaTarefa(tarefa.id); 
-         list +='<li class="'+tarefaconculida+'">'+'<p>'+'<input onclick=MudarStatusTarefa('+tarefa.id+') class="form-check-input position-static"'+ CheckboxStatus + ' type="checkbox" id="'+(tarefa.id)+'" >'+'<i onclick=MudarStatusTarefa('+tarefa.id+')'+'>'+tarefa.desc+'</i>'+
+         list +='<li class="'+tarefaconculida+'">'+'<p>'+'<input onclick=MudarStatusTarefa('+tarefa.id+') class="form-check-input position-static"'+ CheckboxStatus + 
+         ' type="checkbox" id="'+(tarefa.id)+'" >'+'<i onclick=MudarStatusTarefa('+tarefa.id+')'+'>'+tarefa.desc+'</i>'+
          '<img class="btn-editar" data-toggle="modal" data-target="#Deletar"'+ 'src="../assets/icons/lixeira.png"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          '<img class="btn-editar"'+ 'src="../assets/icons/lapis.png" data-toggle="modal" data-target="#EditarTarefa"'+'onclick=recebeId('+tarefa.id+')'+'>'+
          "</p>"
@@ -158,7 +159,6 @@ let Pesquisa=[];
 let TamanhoString=inputPesquisa.length;
  tarefas.forEach(tarefa=>{
  if(tarefa.desc.substring(0, TamanhoString).toUpperCase()===inputPesquisa.toUpperCase()){
-     //toUpperCase
  Pesquisa.push(tarefa);
  }
  });
