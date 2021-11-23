@@ -1,7 +1,7 @@
 # 📌Loopis To-Do
 This repository will be used for the versioning and management of team 4 of the selection process of Loopis JR, a junior company of the IFPB-Cajazeiras.
 # 📢 How to run the project?
-To run the project you just have to click on the image below 	:blush:
+To run the project you just have to click on the image below 😉
 <br><br>
 <a href="https://weslleycz.github.io/Desafio-Loopis/">![image](https://weslleycz.github.io/Desafio-Loopis/assets/images/splashart.png)</a>
 # 📌Loopis To-Do
